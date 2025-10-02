@@ -18,10 +18,10 @@ export default function AboutSection() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl lg:text-5xl font-bold text-foreground mb-4">
-            About EDC IIT Delhi
+            About eDC IIT Delhi?
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Fostering the entrepreneurial spirit and driving innovation across campus
+          
           </p>
         </motion.div>
 
@@ -33,14 +33,8 @@ export default function AboutSection() {
           >
             <div className="space-y-6 text-muted-foreground">
               <p className="text-base leading-relaxed">
-                The Entrepreneurship Development Cell at IIT Delhi is dedicated to nurturing the entrepreneurial mindset among students and young professionals. We believe in the power of innovation and provide a platform for aspiring entrepreneurs to transform their ideas into successful ventures.
-              </p>
-              <p className="text-base leading-relaxed">
-                Through our comprehensive programs including workshops, mentorship sessions, networking events, and our flagship conference BCON, we create an ecosystem that supports every stage of the entrepreneurial journey.
-              </p>
-              <p className="text-base leading-relaxed">
-                Our community has successfully incubated numerous startups, connected thousands of entrepreneurs, and continues to be a driving force in India's startup ecosystem. Join us in shaping the future of innovation.
-              </p>
+              We empower young minds, early-stage startups, and professionals to think big, innovate fearlessly, and build impactful ventures. We partner in your journey by providing the right blend of learning, mentorship, and opportunities. Through workshops, bootcamps, hackathons, competitions, mentorship programmes and funding avenues, we create a thriving ecosystem to turn ideas into reality. With a strong legacy since 2007, eDC continues to inspire and shape the next generation of changemakers across India.
+</p>
             </div>
           </motion.div>
 

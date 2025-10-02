@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
-import heroImage from '@assets/generated_images/Innovation_lab_hero_background_d762e2cd.png';
+import heroImage from '@assets/IIT.jpg';
 
 export default function HeroSection() {
   return (
@@ -9,7 +9,7 @@ export default function HeroSection() {
       <div className="absolute inset-0">
         <img
           src={heroImage}
-          alt="Innovation Lab"
+          alt="IIT Campus"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-background/95 via-background/80 to-background/70" />
@@ -30,7 +30,7 @@ export default function HeroSection() {
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20"
           >
             <Sparkles className="w-4 h-4 text-primary" />
-            <span className="text-sm font-medium text-primary">Empowering Innovation Since 2010</span>
+            <span className="text-sm font-medium text-primary">Ideate-Innovate-Incubate</span>
           </motion.div>
 
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground leading-tight">
@@ -42,7 +42,7 @@ export default function HeroSection() {
           </h1>
 
           <p className="text-xl sm:text-2xl text-muted-foreground max-w-3xl mx-auto">
-            IIT Delhi's Hub for Innovation
+          India’s largest student-run body fostering entrepreneurship since 2007. We empower young minds with resources, mentorship, and skills to build innovative ventures and nurture the next generation of entrepreneurs.
           </p>
 
           <motion.div
@@ -56,7 +56,7 @@ export default function HeroSection() {
               className="text-base px-8 gap-2"
               data-testid="button-explore-initiatives"
             >
-              Explore Initiatives
+              Know More
               <ArrowRight className="w-4 h-4" />
             </Button>
             <Button

@@ -3,7 +3,7 @@ import { Linkedin, Instagram, Twitter, Facebook, Mail } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const quickLinks = [
-  { href: '/', label: 'Home' },
+  { href: '/', label: 'manasvi is choti bachi' },
   { href: '/about', label: 'About Us' },
   { href: '/initiatives', label: 'Initiatives' },
   { href: '/bcon', label: 'BCON' },

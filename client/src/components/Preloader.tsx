@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import preloaderVideo from '@assets/preloader.mov';
 
 export default function Preloader() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIsLoading(false);
-    }, 2000);
-
-    return () => clearTimeout(timer);
-  }, []);
+    // Hard block scroll while preloader is visible
+    if (isLoading) {
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = previousOverflow;
+      };
+    }
+  }, [isLoading]);
 
   return (
     <AnimatePresence>
@@ -22,41 +26,35 @@ export default function Preloader() {
           className="fixed inset-0 z-50 flex items-center justify-center bg-background"
           data-testid="preloader"
         >
-          <div className="flex flex-col items-center gap-8">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="relative w-32 h-32"
-            >
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary via-chart-2 to-chart-3 opacity-20 blur-xl" />
-              <div className="relative w-full h-full rounded-2xl bg-gradient-to-br from-primary via-chart-2 to-chart-3 flex items-center justify-center">
-                <span className="text-4xl font-bold text-primary-foreground font-mono">E</span>
-              </div>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.3 }}
-              className="flex gap-2"
-            >
-              {[0, 1, 2].map((i) => (
-                <motion.div
-                  key={i}
-                  animate={{
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 1, 0.3],
-                  }}
-                  transition={{
-                    duration: 1,
-                    repeat: Infinity,
-                    delay: i * 0.2,
-                  }}
-                  className="w-2 h-2 rounded-full bg-primary"
-                />
-              ))}
-            </motion.div>
-          </div>
+          <motion.div
+            initial={{ scale: 0.98, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.4 }}
+            className="relative w-[320px] max-w-[80vw]"
+          >
+            <video
+              src={preloaderVideo}
+              autoPlay
+              muted
+              playsInline
+              preload="auto"
+              className="w-full h-auto rounded-2xl shadow-lg"
+              onEnded={() => setIsLoading(false)}
+              onError={() => {
+                // If the video errors, keep preloader visible (do not open site early)
+                // Optionally could attempt a replay:
+                // e.currentTarget.load(); e.currentTarget.play().catch(() => {});
+              }}
+              onLoadedData={(e) => {
+                const v = e.currentTarget;
+                if (v.paused) {
+                  v.play().catch(() => {
+                    // If autoplay is blocked, keep preloader until user gesture or video ends
+                  });
+                }
+              }}
+            />
+          </motion.div>
         </motion.div>
       )}
     </AnimatePresence>
