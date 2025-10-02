@@ -1,0 +1,61 @@
+Role: You are an expert full-stack web developer specializing in creating modern, animated, and responsive websites for university organizations.
+
+Project: Generate a complete structural code skeleton for the official website of the Entrepreneurship Development Cell (E-Cell) at IIT Delhi.
+
+Core Technologies: Use HTML5 for structure, CSS3 for styling (employing Flexbox and Grid for layout), and JavaScript for interactivity and animations. Please provide the code in separate, well-commented files (index.html, about.html, style.css, script.js, etc.) to ensure the project is organized and easy to understand.
+
+Website Structure and Features:
+
+1. Global Elements (To be present on all pages):
+Preloader:
+Before the main content loads, display a full-screen preloader.
+This preloader should be prepared to host a video animation of the E-Cell logo. Use a placeholder for now.
+It should fade out smoothly to reveal the website content once loading is complete.
+Sticky Navigation Bar:
+A clean, modern navigation bar fixed to the top of the viewport.
+It should have a semi-transparent background that becomes opaque on scroll.
+Links: Home, About Us, Initiatives, BCON, Gallery, Contact.
+Footer:
+A comprehensive footer section.
+Include sections for: Quick Links (repeating nav links), Social Media Icons (LinkedIn, Instagram, etc.), and a Copyright notice (e.g., "© 2025 E-Cell IIT Delhi. All Rights Reserved.").
+2. Homepage (index.html):
+Hero Section:
+Full-screen section with a high-quality background image.
+Center-aligned text with a large, bold font: "Entrepreneurship Development Cell".
+A smaller sub-heading beneath it: "IIT Delhi's Hub for Innovation".
+Two prominent Call-to-Action (CTA) buttons below the text (e.g., "Explore Initiatives" and "Join Us").
+About E-Cell Section:
+A section with the heading "About EDC IIT Delhi".
+A two-column layout: one column for a brief, engaging paragraph describing E-Cell's mission, and the other column for a compelling image.
+Stats Section:
+A three-card layout.
+Each card will feature a large number that animates, counting up from 0 to a target value (e.g., 50+ for startups, 10k+ for followers).
+Include a short label below each number (e.g., "Startups Incubated", "Social Media Reach", "Events Hosted").
+Initiatives Section:
+A section with the heading "Our Flagship Initiatives".
+A grid of six responsive cards.
+Each card should have a subtle "lift on hover" effect.
+Implement a "reveal on scroll" animation for the cards (e.g., they fade in and slide up as the user scrolls down).
+Each card must contain a placeholder for an image, the initiative's title, and a "Know More" button.
+Past Speakers Section:
+A visually appealing section to showcase logos or profile pictures of previous speakers.
+Arrange these in a horizontally scrolling carousel or a clean grid layout.
+3. About Us Page (about.html):
+Vision & Mission Section:
+Start with a detailed section explaining what E-Cell is, its history, its vision for the future, and its core values.
+Our Team Section:
+A grid-based layout to display team members.
+Each team member should have a profile card with their photo, name, and position (e.g., "Overall Coordinator").
+4. Initiatives Page (initiatives.html):
+A dedicated page to list and provide details about all of E-Cell's initiatives in a clean, organized layout. Each initiative could be its own section or a detailed card.
+5. BCON Page (bcon.html):
+A standalone page dedicated entirely to the flagship event, BCON.
+Include sections for "About BCON", "Event Schedule", "Sponsors", and a registration CTA.
+6. Gallery Page (gallery.html):
+A simple, elegant image gallery, perhaps using a masonry grid layout to display photos from past events.
+7. Contact Page (contact.html):
+Display contact information clearly (email address, office location).
+Include links to all social media profiles.
+Implement a functional contact form with fields for Name, Email, Subject, and Message.
+Final Instructions:
+Please ensure the entire website skeleton is fully responsive and functions flawlessly on desktop, tablet, and mobile devices. Use placeholder text (Lorem Ipsum) and placeholder images (e.g., from https://via.placeholder.com/) throughout the design so the structure is clear. The code should be clean, well-commented, and follow best practices.
