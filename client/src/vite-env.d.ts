@@ -10,7 +10,7 @@ declare module '*.webm' {
   export default src;
 }
 
-declare module '*.mov' {
+declare module '*.gif' {
   const src: string;
   export default src;
 }

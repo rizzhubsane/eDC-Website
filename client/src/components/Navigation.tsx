@@ -3,6 +3,7 @@ import { Link, useLocation } from 'wouter';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { motion, AnimatePresence } from 'framer-motion';
+import logoImage from '@assets/logo.png';
 
 const navLinks = [
   { href: '/', label: 'Home' },
@@ -46,14 +47,12 @@ export default function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <Link href="/" className="flex items-center gap-3 hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2">
-              <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary via-chart-2 to-chart-3 flex items-center justify-center">
-                <span className="text-xl font-bold text-primary-foreground font-mono">E</span>
-              </div>
-              <div className="hidden sm:block">
-                <div className="text-lg font-bold text-foreground">E-Cell</div>
-                <div className="text-xs text-muted-foreground -mt-1">IIT Delhi</div>
-              </div>
+            <Link href="/" className="flex items-center hover-elevate active-elevate-2 rounded-lg px-2 py-1 -ml-2">
+              <img 
+                src={logoImage} 
+                alt="E-Cell Logo" 
+                className="w-32 h-32 object-contain"
+              />
             </Link>
 
             <div className="hidden md:flex items-center gap-1">

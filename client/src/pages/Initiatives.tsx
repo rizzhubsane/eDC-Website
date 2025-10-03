@@ -12,28 +12,28 @@ import workshopImg from '@assets/generated_images/Workshop_series_card_image_639
 const initiatives = [
   {
     icon: Code,
-    title: 'Hackathons',
+    title: 'Venture Studio',
     description: 'Intensive 24-48 hour coding competitions where teams build innovative solutions to real-world problems. Participants get to work with cutting-edge technologies, collaborate with talented peers, and showcase their technical prowess.',
     image: hackathonImg,
     features: ['Cash prizes up to ₹1 Lakh', 'Mentorship from industry experts', 'Networking opportunities', 'Free food and swag'],
   },
   {
     icon: TrendingUp,
-    title: 'Pitch Competitions',
+    title: 'Industry Connect',
     description: 'Platform for aspiring entrepreneurs to present their startup ideas to a panel of investors, industry veterans, and successful entrepreneurs. Winners receive funding, mentorship, and invaluable feedback.',
     image: pitchImg,
     features: ['Seed funding opportunities', 'Investor connections', 'Media coverage', 'Incubation support'],
   },
   {
     icon: Users,
-    title: 'Networking Events',
+    title: 'Genesis',
     description: 'Regular meetups, panel discussions, and social events designed to connect students with entrepreneurs, investors, and industry leaders. Build your professional network in a relaxed, engaging environment.',
     image: networkingImg,
     features: ['Meet successful founders', 'Industry insights', 'Career opportunities', 'Collaborative partnerships'],
   },
   {
     icon: GraduationCap,
-    title: 'Mentorship Program',
+    title: 'Kinesis',
     description: 'Get paired with experienced entrepreneurs and industry professionals who provide personalized guidance on your startup journey. From ideation to scaling, our mentors have been there and done that.',
     image: mentorshipImg,
     features: ['1-on-1 mentoring sessions', 'Expert guidance', 'Strategic planning help', 'Long-term support'],

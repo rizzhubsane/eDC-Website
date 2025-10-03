@@ -1,99 +1,66 @@
 import { createRoot } from "react-dom/client";
 import App from "./App";
 import "./index.css";
-import preloaderVideo from "@assets/preloader.mov";
+import preloaderGif from "@assets/preloader.gif";
 
 const mountApp = () => {
   const rootEl = document.getElementById("root")!;
   createRoot(rootEl).render(<App />);
 };
 
-// Create a fullscreen blocking video that must finish before mounting the app
-const overlay = document.createElement("div");
-overlay.setAttribute("data-preloader-overlay", "");
-overlay.style.position = "fixed";
-overlay.style.inset = "0";
-overlay.style.zIndex = "2147483647";
-overlay.style.background = "var(--background, #0b0b0b)";
-overlay.style.display = "flex";
-overlay.style.alignItems = "center";
-overlay.style.justifyContent = "center";
+// Check if preloader has been shown before
+const hasSeenPreloader = localStorage.getItem('preloader-shown');
 
-const previousOverflow = document.body.style.overflow;
-document.body.style.overflow = "hidden";
+// For testing: uncomment the line below to reset preloader
+localStorage.removeItem('preloader-shown');
 
-const video = document.createElement("video");
-video.src = preloaderVideo;
-video.autoplay = true;
-video.muted = true;
-video.playsInline = true as any;
-video.setAttribute("playsinline", "");
-video.setAttribute("webkit-playsinline", "");
-video.setAttribute("muted", "");
-video.preload = "auto";
-video.controls = false;
-video.style.width = "100%";
-video.style.height = "100%";
-video.style.objectFit = "cover";
-video.style.objectPosition = "center";
-video.style.backgroundColor = "black";
-video.style.cursor = "default";
-
-overlay.appendChild(video);
-document.body.appendChild(overlay);
-
-const cleanupAndMount = () => {
-  try {
-    overlay.remove();
-  } catch {}
-  document.body.style.overflow = previousOverflow;
+if (hasSeenPreloader) {
+  // Skip preloader and mount app directly
+  console.log('Preloader already shown, mounting app directly');
   mountApp();
-};
+} else {
+  console.log('First visit - showing preloader');
+  // Show preloader for first-time visitors
+  const overlay = document.createElement("div");
+  overlay.setAttribute("data-preloader-overlay", "");
+  overlay.style.position = "fixed";
+  overlay.style.inset = "0";
+  overlay.style.zIndex = "2147483647";
+  overlay.style.background = "var(--background, #0b0b0b)";
+  overlay.style.display = "flex";
+  overlay.style.alignItems = "center";
+  overlay.style.justifyContent = "center";
 
-video.addEventListener("ended", cleanupAndMount, { once: true });
+  const previousOverflow = document.body.style.overflow;
+  document.body.style.overflow = "hidden";
 
-video.addEventListener("loadeddata", () => {
-  if (video.paused) {
-    video.play().catch(() => {
-      // Autoplay blocked; we'll reveal a manual play button.
-      showStartButton();
-    });
-  }
-});
+  const img = document.createElement("img");
+  img.src = preloaderGif;
+  img.style.width = "100%";
+  img.style.height = "100%";
+  img.style.objectFit = "cover";
+  img.style.objectPosition = "center";
+  img.style.backgroundColor = "black";
+  img.style.cursor = "default";
 
-// Manual Play button (only if autoplay is blocked)
-const startBtn = document.createElement("button");
-startBtn.textContent = "Play";
-startBtn.style.position = "absolute";
-startBtn.style.top = "50%";
-startBtn.style.left = "50%";
-startBtn.style.transform = "translate(-50%, -50%)";
-startBtn.style.background = "rgba(255,255,255,0.92)";
-startBtn.style.color = "black";
-startBtn.style.fontWeight = "700";
-startBtn.style.fontSize = "18px";
-startBtn.style.padding = "12px 20px";
-startBtn.style.borderRadius = "9999px";
-startBtn.style.border = "0";
-startBtn.style.cursor = "pointer";
-startBtn.style.boxShadow = "0 8px 20px rgba(0,0,0,0.3)";
-startBtn.style.display = "none";
-startBtn.style.zIndex = "2147483648";
-overlay.appendChild(startBtn);
+  overlay.appendChild(img);
+  document.body.appendChild(overlay);
 
-const showStartButton = () => {
-  startBtn.style.display = "inline-block";
-};
+  const cleanupAndMount = () => {
+    try {
+      overlay.remove();
+    } catch {}
+    document.body.style.overflow = previousOverflow;
+    // Mark preloader as shown
+    localStorage.setItem('preloader-shown', 'true');
+    mountApp();
+  };
 
-startBtn.addEventListener("click", () => {
-  video.play().then(() => {
-    startBtn.style.display = "none";
-  }).catch(() => {
-    // If still blocked, keep the button visible
+  // For GIF, we'll use a timeout to dismiss after a reasonable duration
+  // You can adjust this timeout based on your GIF's length
+  setTimeout(cleanupAndMount, 3500); // 5 seconds - adjust as needed
+
+  img.addEventListener("load", () => {
+    // GIF loaded successfully
   });
-});
-
-video.addEventListener("playing", () => {
-  // Hide button as soon as playback starts
-  startBtn.style.display = "none";
-});
+}
